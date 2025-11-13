@@ -1,4 +1,4 @@
-import type { IAuthenticateGeneric, ICredentialType, INodeProperties } from 'n8n-workflow'
+import type { IAuthenticateGeneric, Icon, ICredentialTestRequest, ICredentialType, INodeProperties } from 'n8n-workflow'
 
 export class BasaltApi implements ICredentialType {
 	name = 'basaltApi'
@@ -6,6 +6,8 @@ export class BasaltApi implements ICredentialType {
 	displayName = 'Basalt API'
 
 	documentationUrl = 'https://docs.getbasalt.ai'
+
+	icon: Icon = 'file:basalt.svg'
 
 	properties: INodeProperties[] = [
 		{
@@ -31,9 +33,15 @@ export class BasaltApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				Authorization: '=Bearer {{$credentials.apiKey}}',
 			},
+		},
+	}
+
+	test: ICredentialTestRequest = {
+		request: {
+			method: 'GET',
+			url: 'https://api.getbasalt.ai/prompts',
 		},
 	}
 }
