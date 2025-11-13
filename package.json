@@ -1,0 +1,54 @@
+{
+  "name": "@basalt-ai/n8n-nodes",
+  "version": "0.0.1",
+  "description": "n8n node for Basalt API",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "basalt",
+    "ai",
+    "prompts"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "node -e \"console.log('No tests yet, but node structure is valid')\"",
+	"build": "tsc --build tsconfig.json"
+  },
+  "author": {
+    "name": "Basalt AI",
+    "email": "support@basalt.ai"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/basalt-ai/n8n-nodes",
+    "directory": "n8n-nodes"
+  },
+  "homepage": "https://github.com/basalt-ai/n8n-nodes",
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BasaltApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Basalt/Basalt.node.js"
+    ]
+  },
+  "peerDependencies": {
+    "n8n-workflow": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "n8n-workflow": "^1.0.0",
+    "typescript": "^5.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"node": "@basalt-ai/n8n-node.basalt",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Development", "AI"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://docs.getbasalt.ai/api/authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://docs.getbasalt.ai"
+			}
+		]
+	},
+	"alias": ["basalt", "prompts", "ai prompts"]
+}
