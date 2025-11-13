@@ -1,6 +1,6 @@
 {
-  "name": "@basalt-ai/n8n-nodes",
-  "version": "0.0.1",
+  "name": "@basalt-ai/n8n-nodes-basalt",
+  "version": "0.0.2",
   "description": "n8n node for Basalt API",
   "keywords": [
     "n8n-community-node-package",
@@ -12,11 +12,11 @@
   "license": "MIT",
   "scripts": {
     "test": "node -e \"console.log('No tests yet, but node structure is valid')\"",
-	"build": "tsc --build tsconfig.json"
+	"build": "rm -rf dist && tsc --build tsconfig.json"
   },
   "author": {
     "name": "Basalt AI",
-    "email": "support@basalt.ai"
+    "email": "support@getbasalt.ai"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,4 @@
-# @basalt-ai/n8n-node
+# Basalt n8n nodes
 
 n8n community node for the Basalt API - Manage prompts, monitoring, and datasets through n8n workflows.
 
@@ -27,7 +27,7 @@ This n8n node allows you to:
 
 1. Go to **Settings > Community Nodes**
 2. Select **Install**
-3. Enter `@basalt-ai/n8n-node` in the **Enter npm package name** field
+3. Enter `@basalt-ai/n8n-nodes-basalt` in the **Enter npm package name** field
 4. Agree to the risks and click **Install**
 
 ### Manual Installation (Self-Hosted)
@@ -35,7 +35,7 @@ This n8n node allows you to:
 Navigate to your n8n root directory and run:
 
 ```bash
-npm install @basalt-ai/n8n-node
+npm install @basalt-ai/n8n-nodes-basalt
 ```
 
 Then restart your n8n instance.
@@ -142,7 +142,7 @@ npm run build
 3. Link to your n8n installation:
    ```bash
    cd ~/.n8n/nodes
-   npm link @basalt-ai/n8n-node
+   npm link @basalt-ai/n8n-nodes-basalt
    ```
 
 4. Restart n8n
