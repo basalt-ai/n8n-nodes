@@ -28,9 +28,7 @@ export class Basalt implements INodeType {
 		requestDefaults: {
 			baseURL: '={{$credentials.apiUrl}}',
 			headers: {
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				'Accept': 'application/json',
-				// eslint-disable-next-line @typescript-eslint/naming-convention
 				'Content-Type': 'application/json',
 			},
 		},

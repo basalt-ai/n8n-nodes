@@ -2,7 +2,7 @@
 	"node": "n8n-nodes-basalt",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Development", "AI"],
+	"categories": ["Development", "Developer Tools"],
 	"resources": {
 		"credentialDocumentation": [
 			{
@@ -14,6 +14,5 @@
 				"url": "https://docs.getbasalt.ai"
 			}
 		]
-	},
-	"alias": ["basalt", "prompts", "ai prompts"]
+	}
 }

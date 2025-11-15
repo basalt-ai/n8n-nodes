@@ -15,7 +15,6 @@
     "name": "Basalt AI",
     "email": "support@getbasalt.ai"
   },
-  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/basalt-ai/n8n-nodes"
@@ -36,25 +35,15 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "strict": true,
-    "credentials": [
-      "dist/credentials/BasaltApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/Basalt/Basalt.node.js"
-    ]
+    "credentials": ["dist/credentials/BasaltApi.credentials.js"],
+    "nodes": ["dist/nodes/Basalt/Basalt.node.js"]
   },
   "devDependencies": {
     "@n8n/node-cli": "*",
-    "@types/node": "^20.0.0",
     "eslint": "9.32.0",
     "prettier": "3.6.2",
     "release-it": "^19.0.4",
     "typescript": "5.9.2"
   },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  },
-  "overrides": {
-    "change-case": "^4.1.2"
-  }
+  "peerDependencies": { "n8n-workflow": "*" }
 }
