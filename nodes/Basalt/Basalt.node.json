@@ -1,5 +1,5 @@
 {
-	"node": "@basalt-ai/n8n-node.basalt",
+	"node": "n8n-nodes-basalt",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "AI"],
