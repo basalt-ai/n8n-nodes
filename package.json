@@ -1,6 +1,6 @@
 {
   "name": "@basalt-ai/n8n-nodes-basalt",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "n8n node for Basalt API",
   "license": "MIT",
   "keywords": [
