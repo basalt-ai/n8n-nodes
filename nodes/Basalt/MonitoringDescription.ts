@@ -403,20 +403,87 @@ export const monitoringFields: INodeProperties[] = [
 					},
 				},
 			},
+		],
+	},
+	// Logs fields for Log Trace
+	{
+		displayName: 'Logs',
+		name: 'logs',
+		type: 'fixedCollection',
+		default: {},
+		description: 'The logs to append to the trace',
+		displayOptions: {
+			show: {
+				resource: ['monitoring'],
+				operation: ['logTrace'],
+			},
+		},
+		typeOptions: {
+			multipleValues: true,
+		},
+		options: [
 			{
-				displayName: 'Logs',
-				name: 'logs',
-				type: 'fixedCollection',
-				default: {},
-				description: 'The logs to append to the trace. Each log must have an ID and type (span, function, tool, retrieval, event, or generation).',
-				typeOptions: {
-					multipleValues: true,
-				},
-				options: [
+				name: 'logValues',
+				displayName: 'Log',
+				values: [
 					{
-						name: 'logValues',
-						displayName: 'Log',
-						values: [
+						displayName: 'Log ID',
+						name: 'id',
+						type: 'string',
+						required: true,
+						default: '',
+						description: 'A unique identifier for the log',
+					},
+					{
+						displayName: 'Type',
+						name: 'type',
+						type: 'options',
+						required: true,
+						default: 'span',
+						description: 'The type of log',
+						options: [
+							{
+								name: 'Event',
+								value: 'event',
+							},
+							{
+								name: 'Function',
+								value: 'function',
+							},
+							{
+								name: 'Generation',
+								value: 'generation',
+							},
+							{
+								name: 'Retrieval',
+								value: 'retrieval',
+							},
+							{
+								name: 'Span',
+								value: 'span',
+							},
+							{
+								name: 'Tool',
+								value: 'tool',
+							},
+						],
+					},
+					{
+						displayName: 'Name',
+						name: 'name',
+						type: 'string',
+						required: true,
+						default: '',
+						description: 'The name of the log',
+					},
+					{
+						displayName: 'Log Options',
+						name: 'logOptions',
+						type: 'collection',
+						placeholder: 'Add Option',
+						default: {},
+						description: 'Optional log parameters',
+						options: [
 							{
 								displayName: 'Cost',
 								name: 'cost',
@@ -479,26 +546,11 @@ export const monitoringFields: INodeProperties[] = [
 								description: 'The number of input tokens (only for generation type). If not provided, it will be computed based on the input.',
 							},
 							{
-								displayName: 'Log ID',
-								name: 'id',
-								type: 'string',
-								required: true,
-								default: '',
-								description: 'A unique identifier for the log',
-							},
-							{
 								displayName: 'Metadata',
 								name: 'metadata',
 								type: 'json',
 								default: '',
 								description: 'The metadata of the log (object or null)',
-							},
-							{
-								displayName: 'Name',
-								name: 'name',
-								type: 'string',
-								default: '',
-								description: 'The name of the log',
 							},
 							{
 								displayName: 'Output',
@@ -569,40 +621,6 @@ export const monitoringFields: INodeProperties[] = [
 								description: 'The start time of the log (ISO 8601 string or Unix timestamp integer)',
 							},
 							{
-								displayName: 'Type',
-								name: 'type',
-								type: 'options',
-								required: true,
-								default: 'span',
-								description: 'The type of log',
-								options: [
-									{
-										name: 'Event',
-										value: 'event',
-									},
-									{
-										name: 'Function',
-										value: 'function',
-									},
-									{
-										name: 'Generation',
-										value: 'generation',
-									},
-									{
-										name: 'Retrieval',
-										value: 'retrieval',
-									},
-									{
-										name: 'Span',
-										value: 'span',
-									},
-									{
-										name: 'Tool',
-										value: 'tool',
-									},
-								],
-							},
-							{
 								displayName: 'Variables',
 								name: 'variables',
 								type: 'fixedCollection',
@@ -638,15 +656,15 @@ export const monitoringFields: INodeProperties[] = [
 						],
 					},
 				],
-				routing: {
-					send: {
-						type: 'body',
-						property: 'logs',
-						value: '={{$value.logValues}}',
-					},
-				},
 			},
 		],
+		routing: {
+			send: {
+				type: 'body',
+				property: 'logs',
+				value: '={{$value.logValues.map(log => ({ ...log, ...log.logOptions, logOptions: undefined })).map(log => { const {logOptions, ...rest} = log; return rest; })}}',
+			},
+		},
 	},
 	// Log Output fields
 	{

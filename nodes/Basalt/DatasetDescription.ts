@@ -79,9 +79,9 @@ export const datasetFields: INodeProperties[] = [
 		description: 'The slug of the dataset',
 	},
 	{
-		displayName: 'Values',
-		name: 'values',
-		type: 'json',
+		displayName: 'Column Values',
+		name: 'columnValues',
+		type: 'fixedCollection',
 		required: true,
 		displayOptions: {
 			show: {
@@ -89,12 +89,40 @@ export const datasetFields: INodeProperties[] = [
 				operation: ['createItem'],
 			},
 		},
-		default: '{}',
-		description: 'The values for each column in this dataset row (as JSON object)',
+		default: {},
+		description: 'The values for each column in this dataset row',
+		typeOptions: {
+			multipleValues: true,
+		},
+		options: [
+			{
+				name: 'valueItems',
+				displayName: 'Column Value',
+				values: [
+					{
+						displayName: 'Column Name',
+						name: 'columnName',
+						type: 'string',
+						required: true,
+						default: '',
+						description: 'The name of the column',
+					},
+					{
+						displayName: 'Value',
+						name: 'value',
+						type: 'string',
+						required: true,
+						default: '',
+						description: 'The value for this column',
+					},
+				],
+			},
+		],
 		routing: {
 			send: {
 				type: 'body',
 				property: 'values',
+				value: '={{Object.fromEntries($value.valueItems?.map(item => [item.columnName, item.value]) || [])}}',
 			},
 		},
 	},
@@ -127,9 +155,9 @@ export const datasetFields: INodeProperties[] = [
 			{
 				displayName: 'Ideal Output',
 				name: 'idealOutput',
-				type: 'string',
+				type: 'json',
 				default: '',
-				description: 'The ideal output for this dataset row',
+				description: 'The ideal output for this dataset row (can be string, object, array, or null)',
 				routing: {
 					send: {
 						type: 'body',
@@ -141,8 +169,8 @@ export const datasetFields: INodeProperties[] = [
 				displayName: 'Metadata',
 				name: 'metadata',
 				type: 'json',
-				default: '{}',
-				description: 'Additional metadata for this dataset row',
+				default: '',
+				description: 'Additional metadata for this dataset row (object or null)',
 				routing: {
 					send: {
 						type: 'body',
